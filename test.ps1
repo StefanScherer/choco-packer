@@ -22,8 +22,12 @@ $zip.Dispose()
 . choco install -y packer -source .
 
 "TEST: Version of binary should match"
+. packer version
+if (-Not $(packer version).Contains("Packer v$version")) {
+  Write-Error "FAIL: Wrong version of packer installed!"
+}
 . packer --version
-if (-Not $(packer --version).Contains("packer v$version")) {
+if (-Not $(packer --version).Contains("$version")) {
   Write-Error "FAIL: Wrong version of packer installed!"
 }
 
