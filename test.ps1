@@ -1,6 +1,6 @@
 "Running tests"
 $ErrorActionPreference = "Stop"
-$version = $env:APPVEYOR_BUILD_VERSION -replace('\.[^.\\/]+$')
+$version = $env:APPVEYOR_BUILD_VERSION -replace('\.[^.\\/]+\.[^.\\/]+$')
 
 "TEST: Version $version in packer.nuspec file should match"
 [xml]$spec = Get-Content packer.nuspec
