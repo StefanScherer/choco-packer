@@ -81,7 +81,7 @@ if (Test-Path C:\programdata\chocolatey\lib\packer) {
 }
 
 "TEST: Update from older version to single binary version works"
-. choco install -y packer $options -version 0.8.6
+. choco install -y packer $options -version 0.8.6.20160211
 . choco install -y packer $options -source . -version $version
 . ls C:\programdata\chocolatey\lib\packer
 . ls C:\programdata\chocolatey\lib\packer\tools
