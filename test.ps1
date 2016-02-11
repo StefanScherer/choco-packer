@@ -1,6 +1,7 @@
 "Running tests"
 $ErrorActionPreference = "Stop"
-$version = $env:APPVEYOR_BUILD_VERSION -replace('\.[^.\\/]+\.[^.\\/]+$')
+$version = $env:APPVEYOR_BUILD_VERSION -replace('\.[^.\\/]+$')
+$binaryVersion = $version -replace('\.[^.\\/]+$')
 
 "TEST: Version $version in packer.nuspec file should match"
 [xml]$spec = Get-Content packer.nuspec
@@ -23,11 +24,11 @@ $zip.Dispose()
 
 "TEST: Version of binary should match"
 . packer version
-if (-Not $(packer version).Contains("Packer v$version")) {
+if (-Not $(packer version).Contains("Packer v$binaryVersion")) {
   Write-Error "FAIL: Wrong version of packer installed!"
 }
 . packer --version
-if (-Not $(packer --version).Contains("$version")) {
+if (-Not $(packer --version).Contains("$binaryVersion")) {
   Write-Error "FAIL: Wrong version of packer installed!"
 }
 
