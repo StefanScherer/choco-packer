@@ -17,7 +17,7 @@ if ($env:APPVEYOR_BUILD_VERSION) {
   $version = $env:APPVEYOR_BUILD_VERSION -replace('\.[^.\\/]+$')
 } else {
   # run manually
-  [xml]$spec = Get-Content docker.nuspec
+  [xml]$spec = Get-Content packer.nuspec
   $version = $spec.package.metadata.version
 }
 
@@ -38,7 +38,7 @@ if ($zip.Entries.Count -ne 5) {
 $zip.Dispose()
 
 "TEST: Installation of package should work"
-. choco install -y packer $options -source .
+. choco install -y packer $options -source . -version $version
 
 #"TEST: Version of binary should match"
 #$v = $(packer version)
