@@ -1,12 +1,32 @@
-$url = 'https://releases.hashicorp.com/packer/0.8.6/packer_0.8.6_windows_386.zip'
-$checksum = '36d485f8368212906560174eacff193be1c76893'
-$url64bit = 'https://releases.hashicorp.com/packer/0.8.6/packer_0.8.6_windows_amd64.zip'
-$checksum64 = '05c19cc718dd84a9412d990dff309938130ec269'
+$url = 'https://releases.hashicorp.com/packer/0.9.0/packer_0.9.0_windows_386.zip'
+$checksum = 'f3ea971cefc60e953d64b944fee71b4eb77606895f690a51f485c2562e36f2e9'
+$checksumType = 'sha256'
+$url64bit = 'https://releases.hashicorp.com/packer/0.9.0/packer_0.9.0_windows_amd64.zip'
+$checksum64 = 'dbb98c5a3be92bfe5a4bca5f29d5a9159409af0f360d590953b0e806ebe2342a'
+$checksumType64 = $checksumType
 $legacyLocation = "$env:SystemDrive\HashiCorp\packer"
 $unzipLocation = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
+if ([System.IO.Directory]::Exists("$env:ChocolateyInstall\lib\packer")) {
+  if ([System.IO.Directory]::Exists("$env:ChocolateyInstall\lib\packer\tools")) {
+    # clean old plugins and ignore files
+    Write-Host "Removing old packer plugins"
+    Remove-Item "$env:ChocolateyInstall\lib\packer\tools\packer-*.*"
+  }
+} else {
+  if ([System.IO.Directory]::Exists("$env:ALLUSERSPROFILE\chocolatey\lib\packer")) {
+    if ([System.IO.Directory]::Exists("$env:ALLUSERSPROFILE\chocolatey\lib\packer\tools")) {
+      # clean old plugins and ignore files
+      Write-Host "Removing old packer plugins"
+      Remove-Item "$env:ALLUSERSPROFILE\chocolatey\lib\packer\tools" -Include "packer-*.*"
+    }
+  }
+}
+
+$unzipLocation = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+
 Install-ChocolateyZipPackage "packer" "$url" "$unzipLocation" "$url64bit" `
- -checksum $checksum -checksumType 'sha1' -checksum64 $checksum64
+ -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64
 
 If (Test-Path $legacyLocation) {
   Write-Host "Removing old packer installation from $legacyLocation"
