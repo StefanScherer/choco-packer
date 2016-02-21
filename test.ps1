@@ -40,17 +40,17 @@ $zip.Dispose()
 "TEST: Installation of package should work"
 . choco install -y packer $options -source . -version $version
 
-#"TEST: Version of binary should match"
-#$v = $(packer version)
-#$v
-#if (-Not $v.Contains("Packer v$version")) {
-#  Write-Error "FAIL: Wrong version of packer installed!"
-#}
-#$v = $(packer --version)
-#$v
-#if (-Not $v.Contains("$version")) {
-#  Write-Error "FAIL: Wrong version of packer installed!"
-#}
+"TEST: Version of binary should match"
+$v = $(packer version)
+$v
+if (-Not $v.Contains("Packer v$version")) {
+  Write-Error "FAIL: Wrong version of packer installed!"
+}
+$v = $(packer --version)
+$v
+if (-Not $v.Contains("$version")) {
+  Write-Error "FAIL: Wrong version of packer installed!"
+}
 
 "TEST: All plugins are ignored"
 . ls C:\programdata\chocolatey\lib\packer
