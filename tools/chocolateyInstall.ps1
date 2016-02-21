@@ -23,8 +23,10 @@ if ([System.IO.Directory]::Exists("$env:ChocolateyInstall\lib\packer")) {
   }
 }
 
+$unzipLocation = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+
 Install-ChocolateyZipPackage "packer" "$url" "$unzipLocation" "$url64bit" `
- -checksum $checksum -checksumType 'sha1' -checksum64 $checksum64
+ -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64
 
 If (Test-Path $legacyLocation) {
   Write-Host "Removing old packer installation from $legacyLocation"
