@@ -1,4 +1,4 @@
-version: 1.0.2.{build}
+version: 1.0.3.{build}
 environment:
   TOKEN:
     secure: KE3DuBSMhbBxLurkOXLrmAFbF+zptuCJztv1LDq1DfU65A1NSoYTI9JpYE63h/66
