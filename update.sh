@@ -7,10 +7,16 @@ if [ "$1" = "" ]; then
   exit 1
 fi
 
-if [[ "${OSTYPE}" != "darwin"* ]]; then
-  echo "This version does only support Mac."
+case "${OSTYPE}" in
+"darwin"*)
+  ;;
+"msys")
+  ;;
+*)
+  echo "This version does not support your OS ($OSTYPE)."
   exit 2
-fi
+  ;;
+esac
 
 version=$1
 
