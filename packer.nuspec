@@ -16,7 +16,7 @@
     <tags>packer vagrant virtual machine VM VirtualBox VMware puppet chef</tags>
     <licenseUrl>https://github.com/mitchellh/packer/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <iconUrl>https://github.com/hashicorp/packer/raw/master/website/source/assets/images/favicons/apple-touch-icon.png</iconUrl>
+    <iconUrl>https://github.com/StefanScherer/choco-packer/raw/master/images/packer.png</iconUrl>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
