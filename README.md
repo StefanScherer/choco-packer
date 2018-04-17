@@ -13,4 +13,4 @@ flag also if it hasn't gone through moderation).
 # Links
 
 * https://packer.io
-* https://github.com/mitchellh/packer
+* https://github.com/hashicorp/packer
