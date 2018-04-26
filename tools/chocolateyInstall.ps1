@@ -1,8 +1,8 @@
-$url = 'https://releases.hashicorp.com/packer/1.2.2/packer_1.2.2_windows_386.zip'
-$checksum = 'eb338c97697d8ed94a36bb3ed4d337343f225d04f89ccf76e5817d0c753c9c20'
+$url = 'https://releases.hashicorp.com/packer/1.2.3/packer_1.2.3_windows_386.zip'
+$checksum = '0ac9f62e6bbebaeb848ab0f270928ef6045a1132fda1867072be05206eba5b44'
 $checksumType = 'sha256'
-$url64 = 'https://releases.hashicorp.com/packer/1.2.2/packer_1.2.2_windows_amd64.zip'
-$checksum64 = '9c066bbe463376f9e7991326ecba09672b121776a0f2566c2d8e6ef72d52106e'
+$url64 = 'https://releases.hashicorp.com/packer/1.2.3/packer_1.2.3_windows_amd64.zip'
+$checksum64 = 'c28c4d0710526a9029a9eb4ecc7ab967c267b5be1020680667484f4fe016bd99'
 $checksumType64 = $checksumType
 $legacyLocation = "$env:SystemDrive\HashiCorp\packer"
 $unzipLocation = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
