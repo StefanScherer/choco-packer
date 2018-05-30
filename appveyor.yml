@@ -7,8 +7,7 @@ build_script:
   - ps: choco pack
 
 test_script:
-  - ps: .\test.ps1 -cpu x64
-  - ps: .\test.ps1 -cpu x86
+  - ps: .\test.ps1
 
 deploy_script:
   - ps: >-

@@ -1,5 +1,5 @@
-$url = 'https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_windows_386.zip'
-$checksum = ''
+$url = 'https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_windows_amd64.zip'
+$checksum = '97c030add9c3d772f445df7bae3f0e70c4b67d4ed13c39e02b4cc338d8c93016'
 $checksumType = 'sha256'
 $url64 = 'https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_windows_amd64.zip'
 $checksum64 = '97c030add9c3d772f445df7bae3f0e70c4b67d4ed13c39e02b4cc338d8c93016'
