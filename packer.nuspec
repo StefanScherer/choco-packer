@@ -13,7 +13,7 @@
     <mailingListUrl>https://groups.google.com/forum/#!forum/packer-tool</mailingListUrl>
     <bugTrackerUrl>https://github.com/hashicorp/packer/issues</bugTrackerUrl>
     <packageSourceUrl>https://github.com/StefanScherer/choco-packer</packageSourceUrl>
-    <tags>packer vagrant virtual machine VM VirtualBox VMware puppet chef</tags>
+    <tags>packer vagrant virtual machine VM VirtualBox VMware puppet chef hashicorp</tags>
     <licenseUrl>https://github.com/hashicorp/packer/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <iconUrl>https://raw.githubusercontent.com/StefanScherer/choco-packer/master/images/packer.png</iconUrl>
