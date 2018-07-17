@@ -1,5 +1,15 @@
+param(
+  [string]$cpu
+)
 
-"Running tests"
+if (!$cpu) {
+  $cpu = "x64"
+}
+if ($cpu -eq "x86") {
+  $options = "-forcex86"
+}
+
+"Running tests for $cpu"
 $ErrorActionPreference = "Stop"
 
 if ($env:APPVEYOR_BUILD_VERSION) {
