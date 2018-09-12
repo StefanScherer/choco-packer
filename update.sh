@@ -23,8 +23,8 @@ version=$1
 shaurl="https://releases.hashicorp.com/packer/${version}/packer_${version}_SHA256SUMS"
 url="https://releases.hashicorp.com/packer/${version}/packer_${version}_windows_386.zip"
 url64="https://releases.hashicorp.com/packer/${version}/packer_${version}_windows_amd64.zip"
-checksum=$(curl "${shaurl}" | grep windows_386.zip | cut -f 1 -d " ")
-checksum64=$(curl "${shaurl}" | grep windows_amd64.zip | cut -f 1 -d " ")
+checksum=$(curl --fail "${shaurl}" | grep windows_386.zip | cut -f 1 -d " ")
+checksum64=$(curl --fail "${shaurl}" | grep windows_amd64.zip | cut -f 1 -d " ")
 
 sed -i.bak "s/<version>.*<\/version>/<version>${version}<\/version>/" packer.nuspec
 
