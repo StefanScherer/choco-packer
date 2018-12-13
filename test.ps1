@@ -20,11 +20,12 @@ if ($env:APPVEYOR_BUILD_VERSION) {
   [xml]$spec = Get-Content packer.nuspec
   $version = $spec.package.metadata.version
 }
+$binaryVersion = $version -replace('^([0-9]+\.[0-9]+\.[0-9]+)\..+$', '$1')
 
 "TEST: Version $version in packer.nuspec file should match"
 [xml]$spec = Get-Content packer.nuspec
 if ($spec.package.metadata.version.CompareTo($version)) {
-  Write-Error "FAIL: rong version in nuspec file!"
+  Write-Error "FAIL: Wrong version in nuspec file!"
 }
 
 "TEST: Package should contain only install script"
@@ -43,12 +44,12 @@ $zip.Dispose()
 "TEST: Version of binary should match"
 $v = $(packer version)
 $v
-if (-Not $v.Contains("Packer v$version")) {
+if (-Not $v.Contains("Packer v$binaryVersion")) {
   Write-Error "FAIL: Wrong version of packer installed!"
 }
 $v = $(packer --version)
 $v
-if (-Not $v.Contains("$version")) {
+if (-Not $v.Contains("$binaryVersion")) {
   Write-Error "FAIL: Wrong version of packer installed!"
 }
 
