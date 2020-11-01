@@ -1,7 +1,7 @@
-$url = 'https://releases.hashicorp.com/packer/1.6.4/packer_1.6.5_windows_386.zip'
+$url = 'https://releases.hashicorp.com/packer/1.6.5/packer_1.6.5_windows_386.zip'
 $checksum = '75cf9bb564bf2865a72a6aa9bec5e0a6d69cfa119be8b297e9be26fb7e3000fd'
 $checksumType = 'sha256'
-$url64 = 'https://releases.hashicorp.com/packer/1.6.4/packer_1.6.5_windows_amd64.zip'
+$url64 = 'https://releases.hashicorp.com/packer/1.6.5/packer_1.6.5_windows_amd64.zip'
 $checksum64 = 'ff64180c8ebba2f9fe08fa6ae3dbe8282067ff1174b77edee7b1d9ac676d1383'
 $checksumType64 = $checksumType
 $legacyLocation = "$env:SystemDrive\HashiCorp\packer"
