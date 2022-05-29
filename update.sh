@@ -11,6 +11,8 @@ fi
 case "${OSTYPE}" in
 "darwin"*)
   ;;
+"linux-gnu")
+  ;;
 "msys")
   ;;
 *)
