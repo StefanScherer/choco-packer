@@ -12,6 +12,9 @@ if ($cpu -eq "x86") {
 "Running tests for $cpu"
 $ErrorActionPreference = "Stop"
 
+"TEST: Uninstall packer first"
+. choco uninstall packer
+
 if ($env:APPVEYOR_BUILD_VERSION) {
   # run in CI
   $version = $env:APPVEYOR_BUILD_VERSION -replace('\.[^.\\/]+$')
