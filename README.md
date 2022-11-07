@@ -2,7 +2,6 @@
 
 [![Latest version released](https://img.shields.io/chocolatey/v/packer.svg)](https://chocolatey.org/packages/packer)
 [![Package downloads count](https://img.shields.io/chocolatey/dt/packer.svg)](https://chocolatey.org/packages/packer)
-[![Build status](https://ci.appveyor.com/api/projects/status/2h4xf63mmnxg3yyi/branch/main?svg=true)](https://ci.appveyor.com/project/StefanScherer/choco-packer/branch/main)
 
 This is a chocolatey package for packer. Please see MAINTENANCE.md
 for information on how to upkeep it.

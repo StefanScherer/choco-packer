@@ -31,8 +31,6 @@ checksum64=$(curl --fail "${shaurl}" | grep windows_amd64.zip | cut -f 1 -d " ")
 
 sed -i.bak "s/<version>.*<\/version>/<version>${version}<\/version>/" packer.nuspec
 
-sed -i.bak "s/version: .*{build}/version: ${version}.{build}/" appveyor.yml
-
 sed -i.bak "s!^\$url = '.*'!\$url = '${url}'!" tools/chocolateyInstall.ps1
 sed -i.bak "s/^\$checksum = '.*'/\$checksum = '${checksum}'/" tools/chocolateyInstall.ps1
 sed -i.bak "s!^\$url64 = '.*'!\$url64 = '${url64}'!" tools/chocolateyInstall.ps1

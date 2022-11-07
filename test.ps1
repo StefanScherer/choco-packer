@@ -15,14 +15,9 @@ $ErrorActionPreference = "Stop"
 "TEST: Uninstall packer first"
 . choco uninstall packer
 
-if ($env:APPVEYOR_BUILD_VERSION) {
-  # run in CI
-  $version = $env:APPVEYOR_BUILD_VERSION -replace('\.[^.\\/]+$')
-} else {
-  # run manually
-  [xml]$spec = Get-Content packer.nuspec
-  $version = $spec.package.metadata.version
-}
+[xml]$spec = Get-Content packer.nuspec
+$version = $spec.package.metadata.version
+
 $binaryVersion = $version -replace('^([0-9]+\.[0-9]+\.[0-9]+)\..+$', '$1')
 
 "TEST: Version $version in packer.nuspec file should match"
