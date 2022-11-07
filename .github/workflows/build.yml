@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  packer:
+    runs-on: windows-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Choco pack
+        uses: crazy-max/ghaction-chocolatey@v2.1.0
+        with:
+          args: pack .\packer.nuspec
+
+      - name: Test 64 bit
+        run: .\test.ps1 -cpu x64
+      - name: Test 32 bit
+        run: .\test.ps1 -cpu x86
