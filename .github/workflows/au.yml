@@ -22,7 +22,20 @@ jobs:
 
       - name: Update package files
         shell: pwsh
-        run: .\update.ps1
+        run: |
+          $workspace = (Get-Location).Path
+          $auPath = Join-Path $env:RUNNER_TEMP 'packer'
+          if (Test-Path $auPath) {
+            Remove-Item -Path $auPath -Force -Recurse
+          }
+          New-Item -ItemType Junction -Path $auPath -Target $workspace | Out-Null
+          Push-Location $auPath
+          try {
+            .\update.ps1
+          } finally {
+            Pop-Location
+            Remove-Item -Path $auPath -Force
+          }
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
