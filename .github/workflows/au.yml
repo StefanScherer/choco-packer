@@ -69,4 +69,7 @@ jobs:
       - name: Publish package
         if: steps.changes.outputs.changed == 'true'
         shell: pwsh
-        run: choco push .\packer.*.nupkg --source https://push.chocolatey.org/ --skip-duplicate
+        run: |
+          Get-ChildItem .\packer.*.nupkg | ForEach-Object {
+            choco push $_.FullName --source https://push.chocolatey.org/ --skip-duplicate
+          }
