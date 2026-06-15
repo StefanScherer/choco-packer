@@ -7,6 +7,12 @@ $ErrorActionPreference = 'Stop'
 
 Import-Module au -Force
 
+Set-Location -Path $PSScriptRoot
+
+if (-not (Test-Path (Join-Path $PSScriptRoot 'packer.nuspec'))) {
+  throw "packer.nuspec not found in $PSScriptRoot"
+}
+
 function global:au_GetLatest {
   $versionPattern = '^/packer/\d+\.\d+\.\d+/$'
 
