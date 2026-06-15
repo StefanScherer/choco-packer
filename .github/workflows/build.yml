@@ -16,12 +16,11 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Choco pack
-        uses: crazy-max/ghaction-chocolatey@v2.1.0
-        with:
-          args: pack .\packer.nuspec
+        shell: pwsh
+        run: choco pack .\packer.nuspec
 
       - name: Test 64 bit
         run: .\test.ps1 -cpu x64
