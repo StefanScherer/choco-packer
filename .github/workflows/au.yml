@@ -70,6 +70,21 @@ jobs:
         if: steps.changes.outputs.changed == 'true'
         shell: pwsh
         run: |
-          Get-ChildItem .\packer.*.nupkg | ForEach-Object {
-            choco push --source https://push.chocolatey.org/ --skip-duplicate $_.FullName
+          $packages = Get-ChildItem .\packer.*.nupkg
+          if (-not $packages) {
+            throw "No package artifact found to publish."
+          }
+
+          foreach ($package in $packages) {
+            $pushOutput = choco push $package.FullName --source https://push.chocolatey.org/ 2>&1 | Out-String
+            $pushOutput | Write-Host
+
+            if ($LASTEXITCODE -ne 0) {
+              if ($pushOutput -match '(already exists|409|conflict)') {
+                Write-Host "Package already exists on Chocolatey. Skipping: $($package.Name)"
+                continue
+              }
+
+              throw "Chocolatey push failed for $($package.Name)"
+            }
           }
