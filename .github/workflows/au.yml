@@ -71,5 +71,5 @@ jobs:
         shell: pwsh
         run: |
           Get-ChildItem .\packer.*.nupkg | ForEach-Object {
-            choco push $_.FullName --source https://push.chocolatey.org/ --skip-duplicate
+            choco push --source https://push.chocolatey.org/ --skip-duplicate $_.FullName
           }
