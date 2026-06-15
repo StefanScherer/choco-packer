@@ -40,14 +40,14 @@ $zip.Dispose()
 . choco install -y packer $options -source . -version $version
 
 "TEST: Version of binary should match"
-$v = $(packer version)
+$v = (packer version | Out-String).Trim()
 $v
-if (-Not $v.Contains("Packer v$binaryVersion")) {
+if ($v -notmatch "Packer v$([regex]::Escape($binaryVersion))") {
   Write-Error "FAIL: Wrong version of packer installed!"
 }
-$v = $(packer --version)
+$v = (packer --version | Out-String).Trim()
 $v
-if (-Not $v.Contains("$binaryVersion")) {
+if ($v -notmatch [regex]::Escape($binaryVersion)) {
   Write-Error "FAIL: Wrong version of packer installed!"
 }
 
