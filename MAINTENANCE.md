@@ -19,23 +19,25 @@ Main installation script is written in PowerShell and is in
 
 ## Making a new release
 
-#### 1. Update `packer.nuspec`
+#### 1. Run the AU updater
 
-You need to update the value in `<version>` tag with
-the official packer version string correctly.
+The package metadata is updated with Chocolatey AU:
 
-#### 2. Update `tools\chocolateyInstall.ps1`
+    ./update.sh
 
-You need to update `$url`, `$url64`, `$checksum` and `$checksum64`
-variables below.
+Optionally pin a specific version:
 
-#### 4. Git push
+    ./update.sh 1.15.3
+
+This updates `packer.nuspec` and `tools\chocolateyInstall.ps1`.
+
+#### 2. Git push
 
 Push your changes to GitHub and check the GitHub Actions build. See the GitHub Actions build section below for details.
 
     git push
 
-#### 5. Git tag
+#### 3. Git tag
 
 After a successfull GitHub Actions build tag the sources and push the new tag to GitHub. This step builds and tests the package and pushes the new package to Chocolatey.
 

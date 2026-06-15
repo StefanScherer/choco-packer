@@ -5,6 +5,7 @@
 
 This is a chocolatey package for packer. Please see MAINTENANCE.md
 for information on how to upkeep it.
+Updates are automated with Chocolatey AU via `update.ps1`/`update.sh`.
 
 To use, simply run `choco install packer -y` (this may need a `-pre`
 flag also if it hasn't gone through moderation).
